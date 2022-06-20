@@ -38,4 +38,4 @@ In root folder place:
 
 ## Future plans
 
-* npx script to create basic template for project
+* npx script for creating basic template for project

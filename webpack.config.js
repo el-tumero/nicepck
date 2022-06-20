@@ -3,21 +3,27 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMessages = require('webpack-messages');
+const { watch } = require('fs');
 
 module.exports = {
     mode: "development",
     entry: './src/index.ts',
     output: {
-        path: path.resolve("./", 'dist'),
+        path: path.resolve('./', 'dist'),
     },
     devServer: {
+        watchFiles: ['src/*.pug'],
         open: true,
         host: 'localhost',
-        port: 1234
+        port: 1234,
+        hot: true,
+        liveReload: true
+        
+        // watchFiles
     },
     plugins: [
         new HtmlWebpackPlugin({
-            template: './src/index.html',
+            template: './src/index.pug',
         }),
 
         new WebpackMessages({
@@ -26,6 +32,14 @@ module.exports = {
     ],
     module: {
         rules: [
+            {
+                test: /\.pug$/,
+                use: [
+                    {
+                        loader: "pug-loader"
+                    }
+                ]
+            },
             {
                 test: /\.(ts|tsx)$/i,
                 loader: 'ts-loader',
@@ -45,5 +59,6 @@ module.exports = {
     resolve: {
         extensions: ['.tsx', '.ts', '.jsx', '.js', '...'],
     },
+    target: 'web'
 };
 
