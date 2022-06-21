@@ -1,7 +1,7 @@
 {
   "name": "nicepck",
-  "version": "1.0.6",
-  "description": "Ready webpack config for frond-end app using Typescript SASS & PUG",
+  "version": "1.0.7",
+  "description": "Ready Webpack 5 config for frond-end app using Typescript, SASS & PUG",
   "main": "./bin/index.js",
   "author": "el-tumero",
   "license": "MIT",
