@@ -3,11 +3,35 @@ const Webpack = require("webpack")
 const WebpackDevServer = require("webpack-dev-server")
 const webpackConfig = require("../webpack.config.js")
 const clc = require("cli-color")
+const fs = require("fs")
+const path = require("path")
+const configs = require("./default-configs.json")
+
 
 const mode = process.argv[2]
 
+const configFileNames = ['postcss.config.js', 'tailwind.config.js', 'tsconfig.json']
+
 
 const compiler = Webpack(webpackConfig)
+
+if(mode == "init"){
+    console.log(clc.blue("Creating config files:"))
+    configFileNames.forEach(fileName => {
+        if(configs[fileName]){
+            fs.writeFile("./" + fileName, JSON.stringify(configs[fileName], null, 2), err => {
+                if(err) throw err
+                console.log(clc.yellow(fileName) + " created!")
+            } )
+
+        }else{
+                fs.copyFile(path.join(__dirname, "../default-configs/") + fileName, './' + fileName, err => {
+                if(err) throw err
+                console.log(clc.yellow(fileName) + " created!")
+        })
+        }
+    }) 
+}
 
 if(!mode || mode == "serve"){
     const devServerOptions = { ...webpackConfig.devServer, open: true };
