@@ -43,7 +43,7 @@ if(mode == "init"){
             } )
 
         }else{
-                fs.copyFile(path.join(__dirname, "../default-configs/") + fileName, './' + fileName, err => {
+                fs.copyFile(path.join(__dirname, "../configs/") + fileName, './' + fileName, err => {
                 if(err) throw err
                 console.log(clc.yellow(fileName) + " created!")
         })
