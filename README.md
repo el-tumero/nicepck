@@ -14,3 +14,4 @@ Currently our Webpack config is made for Typescript / Pug / Scss / Tailwind
 * in package.json create script `"scripts":{ "dev": "pck"}` for development server with HMR enabled
 * in package.json create script `"scripts":{ "build": "pck build"}` for bundling files to `dist` folder
 * simply run `yarn dev` or `npm run dev` or `yarn build` or `npm run build`
+
