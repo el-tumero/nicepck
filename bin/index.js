@@ -15,6 +15,24 @@ const configFileNames = ['postcss.config.js', 'tailwind.config.js', 'tsconfig.js
 
 const compiler = Webpack(webpackConfig)
 
+if(mode == "template"){
+    console.log(clc.blue("Creating template in src folder!"))
+
+    fs.mkdir("./src", err => {
+        if(err) throw err
+    })
+
+    fs.readdir(path.join(__dirname, '../default-configs/template'), (err, files) => {
+        if(err) throw err
+        files.forEach(file => {
+            fs.copyFile(path.join(__dirname, '../default-configs/template/' + file) , "./src/" + file, err => {
+                if(err) throw err
+            })
+        })
+    })
+
+}
+
 if(mode == "init"){
     console.log(clc.blue("Creating config files:"))
     configFileNames.forEach(fileName => {
@@ -38,7 +56,6 @@ if(!mode || mode == "serve"){
     const server = new WebpackDevServer(devServerOptions, compiler);
 
     server.startCallback(() => {
-        console.log('Server running on http://localhost:1234');
     });
 }
 

@@ -3,13 +3,18 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMessages = require('webpack-messages');
-const { watch } = require('fs');
+
 
 module.exports = {
     mode: "development",
     entry: './src/index.ts',
     output: {
         path: path.resolve('./', 'dist'),
+    },
+    stats: {
+        preset: "minimal",
+        moduleTrace: true,
+        errorDetails: true
     },
     devServer: {
         watchFiles: ['src/*.pug'],
@@ -18,8 +23,6 @@ module.exports = {
         port: 1234,
         hot: true,
         liveReload: true
-        
-        // watchFiles
     },
     plugins: [
         new HtmlWebpackPlugin({
