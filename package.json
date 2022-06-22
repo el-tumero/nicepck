@@ -1,15 +1,18 @@
 {
   "name": "nicepck",
   "version": "1.0.8",
-  "description": "Ready Webpack 5 config for frond-end app using Typescript, SASS & PUG",
+  "description": "Ready Webpack 5 config for frond-end app using Typescript, SASS, HTML or PUG",
   "main": "./bin/index.js",
   "author": "el-tumero",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/el-tumero/nicepck.git"
+  },
   "bin": {
     "pck": "./bin/index.js"
   },
   "dependencies": {
-    "@webpack-cli/generators": "^2.5.0",
     "autoprefixer": "^10.4.7",
     "cli-color": "^2.0.2",
     "css-loader": "^6.7.1",
@@ -27,5 +30,8 @@
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2",
     "webpack-messages": "^2.0.4"
+  },
+  "devDependencies": {
+    "@webpack-cli/generators": "^2.5.0"
   }
 }
