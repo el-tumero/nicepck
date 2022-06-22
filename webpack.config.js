@@ -1,7 +1,4 @@
-// Generated using webpack-cli https://github.com/webpack/webpack-cli
-
 const path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 const WebpackMessages = require('webpack-messages');
 
 
@@ -17,7 +14,7 @@ module.exports = {
         errorDetails: true
     },
     devServer: {
-        watchFiles: ['src/*.pug'],
+        watchFiles: ['src/*.pug', 'src/*.html'],
         open: true,
         host: 'localhost',
         port: 1234,
@@ -25,10 +22,6 @@ module.exports = {
         liveReload: true
     },
     plugins: [
-        new HtmlWebpackPlugin({
-            template: './src/index.pug',
-        }),
-
         new WebpackMessages({
             name: 'client',
         })
