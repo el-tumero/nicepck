@@ -7,9 +7,12 @@ const fs = require("fs")
 const commands = require("./commands")
 
 const mode = process.argv[2]
+const isBundling = mode === "" || mode === "serve" || mode === "build"
+
+
 
 fs.readFile("./nice.config.json", async(err,data) => {
-    if(err) console.log(clc.green("nice.config.json file is not created, but it's all fine :)"))
+    if(err && isBundling) console.log(clc.green("nice.config.json file is not created, but it's all fine :)"))
     if(!data) {
         handleConfig({})
         return
@@ -20,7 +23,7 @@ fs.readFile("./nice.config.json", async(err,data) => {
 function handleConfig(configFile){
     let fileExt = "pug" // pug by default
     if(configFile.htmlTemplate === "html") fileExt = "html"
-    console.log(fileExt + " file set!")
+    if(isBundling) console.log(fileExt + " file set!")
     webpackConfig["plugins"].push(
         new HtmlWebpackPlugin({
         template: './src/index.' + fileExt,

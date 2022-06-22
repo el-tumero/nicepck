@@ -8,7 +8,7 @@ Currently our Webpack config is made for Typescript, Pug, Scss, Tailwind
 * Install it with `npm` or `yarn`.
 * Then just type `npm run pck init` or `yarn pck init`. This command will create nessesary config files.
 * Generate template via `npm run pck template` or `yarn pck template`
-* If you want to use .html instead of .pug file you need to create in project root folder file called nice.config.json and copy this code:
+* If you want to use .html instead of .pug file you need to change "pug" to "html in nice.config.json file:
 
 ```json
 {

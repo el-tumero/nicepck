@@ -4,7 +4,7 @@ const configs = require("./default-configs.json");
 const fs = require("fs")
 const WebpackDevServer = require("webpack-dev-server")
 
-const configFileNames = ['postcss.config.js', 'tailwind.config.js', 'tsconfig.json']
+const configFileNames = ['postcss.config.js', 'tailwind.config.js', 'tsconfig.json', 'nice.config.json']
 
 function runCommands(compiler, mode, webpackConfig){
     if(mode == "template"){
