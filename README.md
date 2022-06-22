@@ -12,7 +12,7 @@ Currently our Webpack config is made for Typescript, Pug, Scss, Tailwind
 
 ```json
 {
-    "htmlTemplate": "html
+    "htmlTemplate": "html"
 }
 ```
 
