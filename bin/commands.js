@@ -42,6 +42,15 @@ function runCommands(compiler, mode, webpackConfig){
             }
         }) 
     }
+
+    if(mode == "deinit"){
+        console.log(clc.red("Deleting config files!"))
+        configFileNames.forEach(fileName => {
+            fs.unlink("./" + fileName, err => {
+                if(err) throw err
+            })  
+        })
+    }
     
     if(!mode || mode == "serve"){
         const devServerOptions = { ...webpackConfig.devServer, open: true };

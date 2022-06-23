@@ -1,6 +1,6 @@
 {
   "name": "nicepck",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Ready Webpack 5 config for frond-end app using Typescript, SASS, HTML or PUG",
   "main": "./bin/index.js",
   "author": "el-tumero",
@@ -29,7 +29,8 @@
     "webpack": "^5.73.0",
     "webpack-cli": "^4.10.0",
     "webpack-dev-server": "^4.9.2",
-    "webpack-messages": "^2.0.4"
+    "file-loader": "^6.2.0",
+    "html-loader": "^3.1.2"
   },
   "devDependencies": {
     "@webpack-cli/generators": "^2.5.0"

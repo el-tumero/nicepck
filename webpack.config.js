@@ -1,6 +1,5 @@
 const path = require('path');
 
-
 module.exports = {
     mode: "development",
     entry: './src/index.ts',
@@ -30,7 +29,7 @@ module.exports = {
     ],
     module: {
         rules: [
-            {
+            { // pug
                 test: /\.pug$/,
                 use: [
                     {
@@ -38,19 +37,33 @@ module.exports = {
                     }
                 ]
             },
-            {
+            { // html
+                test: /\.html$/,
+                loader: 'html-loader'
+            },
+            { // typescript
                 test: /\.(ts|tsx)$/i,
                 loader: 'ts-loader',
                 exclude: ['/node_modules/'],
             },
-            {
+            { // sass
                 test: /\.s[ac]ss$/i,
                 use: ["style-loader", 'css-loader', 'sass-loader', 'postcss-loader'],
             },
-            {
-                test: /\.(eot|svg|ttf|woff|woff2|png|jpg|gif)$/i,
-                type: 'asset',
+            { // images
+                test: /\.(png|jpg|jpeg|svg|ico|gif)/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/images/[name].[hash:8][ext]'
+                }
             },
+            { // fonts
+                test: /\.(woff2|woff|ttf|svg|eot)/,
+                type: 'asset/resource',
+                generator: {
+                    filename: 'assets/fonts/[name][ext]',
+                },
+            }
 
         ],
     },
