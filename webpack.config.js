@@ -1,5 +1,6 @@
 const path = require('path');
 const WebpackMessages = require('webpack-messages');
+const NiceWebpackMessages = require('./plugin/NiceWebpackmessages')
 
 
 module.exports = {
@@ -9,9 +10,13 @@ module.exports = {
         path: path.resolve('./', 'dist'),
     },
     stats: {
-        preset: "minimal",
-        moduleTrace: true,
-        errorDetails: true
+        // preset: "normal"
+        // preset: "errors-warnings",
+        errors: true,
+        errorsCount: true,
+        warnings: true,
+        all: false,
+        
     },
     devServer: {
         watchFiles: ['src/*.pug', 'src/*.html'],
@@ -19,12 +24,13 @@ module.exports = {
         host: 'localhost',
         port: 1234,
         hot: true,
-        liveReload: true
+        liveReload: true,
+        client: {
+            logging: 'none'
+        }
     },
     plugins: [
-        new WebpackMessages({
-            name: 'client',
-        })
+        new NiceWebpackMessages()
     ],
     module: {
         rules: [
