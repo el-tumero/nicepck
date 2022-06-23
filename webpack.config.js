@@ -1,6 +1,4 @@
 const path = require('path');
-const WebpackMessages = require('webpack-messages');
-const NiceWebpackMessages = require('./plugin/NiceWebpackmessages')
 
 
 module.exports = {
@@ -10,8 +8,6 @@ module.exports = {
         path: path.resolve('./', 'dist'),
     },
     stats: {
-        // preset: "normal"
-        // preset: "errors-warnings",
         errors: true,
         errorsCount: true,
         warnings: true,
@@ -30,7 +26,7 @@ module.exports = {
         }
     },
     plugins: [
-        new NiceWebpackMessages()
+        // added in index.js
     ],
     module: {
         rules: [

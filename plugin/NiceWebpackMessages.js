@@ -1,9 +1,14 @@
 const clc = require("cli-color")
 const fs = require("fs")
 const path = require("path")
-const { compile } = require("pug")
+
 
 class NiceWebpackMessages {
+
+    constructor(devServerPort){
+       this.devServerPort = devServerPort
+    }
+
     apply(compiler){
 
         let files = []
@@ -31,6 +36,7 @@ class NiceWebpackMessages {
 
         compiler.hooks.afterCompile.tapAsync('NiceWebpackMessages', (compilation, callback) => {
             console.clear()
+            if(this.devServerPort) console.log(clc.greenBright("Dev server: ") + "http://localhost:" + this.devServerPort )
             console.log("⚙️  " + clc.yellow("Compilation:"))
             console.log(clc.greenBright("Source files:"))
             files.forEach(path => {
