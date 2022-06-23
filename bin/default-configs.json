@@ -10,7 +10,8 @@
       "resolveJsonModule": true,
       "esModuleInterop": true
     },
-    "files": ["src/index.ts"]  
+    "include": ["src/**/*"],
+    "exclude": ["node_modules"]
 },
 "nice.config.json": {
   "htmlTemplate": "pug"
