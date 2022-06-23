@@ -15,12 +15,15 @@ const devServerPort = 1234
 
 
 fs.readFile("./nice.config.json", async(err,data) => {
-    if(err && isBundling) console.log(clc.green("nice.config.json file is not created, but it's all fine :)"))
-    if(!data) {
-        handleConfig({})
+    if(err && isBundling){
+        console.log(clc.red("nice.config.json file is not created :("))
         return
-    }
-    handleConfig(await JSON.parse(data))
+    } 
+  
+    if(err && !isBundling) init()
+
+    if(data) handleConfig(await JSON.parse(data))
+    
 })
 
 function handleConfig(configFile){
@@ -28,11 +31,24 @@ function handleConfig(configFile){
     let port
     if(configFile.htmlTemplate === "html") fileExt = "html"
     if(isBundling) console.log(fileExt + " file set!")
-    webpackConfig["plugins"].push(
+
+    if(configFile.htmlTemplate)
+    configFile.entries.forEach(entry => {
+        const splitedEntry = entry.split("/")
+        const name = splitedEntry[splitedEntry.length - 1].split(".")[0]
+        webpackConfig.entry[name] = entry
+
+        webpackConfig["plugins"].push(
         new HtmlWebpackPlugin({
-        template: './src/index.' + fileExt,
+            inject: true,
+            chunks: [name],
+            filename: name + '.' + "html",
+            template: './src/' + name + '.' + fileExt,
         })
-    )
+        )
+
+    })
+    // console.log()
 
     webpackConfig["devServer"].port = devServerPort // setting the dev server port 
 
@@ -47,6 +63,11 @@ function handleConfig(configFile){
 function init(){
     const compiler = Webpack(webpackConfig)
     commands.runCommands(compiler, mode, webpackConfig)
+
+}
+
+module.exports = {
+    handleConfig
 }
 
 

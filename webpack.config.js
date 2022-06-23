@@ -2,9 +2,12 @@ const path = require('path');
 
 module.exports = {
     mode: "development",
-    entry: './src/index.ts',
+    entry: {
+        // 'index': './src/index.ts'
+    },
     output: {
         path: path.resolve('./', 'dist'),
+        filename: "[name].[contenthash].js",
     },
     stats: {
         errors: true,
@@ -31,15 +34,11 @@ module.exports = {
         rules: [
             { // pug
                 test: /\.pug$/,
-                use: [
-                    {
-                        loader: "pug-loader"
-                    }
-                ]
+                use: ['pug-loader', path.resolve(__dirname, 'plugin/HrefLoader.js')]
             },
             { // html
                 test: /\.html$/,
-                loader: 'html-loader'
+                loader: 'html-loader',
             },
             { // typescript
                 test: /\.(ts|tsx)$/i,

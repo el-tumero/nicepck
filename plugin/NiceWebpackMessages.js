@@ -7,6 +7,7 @@ class NiceWebpackMessages {
 
     constructor(devServerPort){
        this.devServerPort = devServerPort
+       this.clear = true
     }
 
     apply(compiler){
@@ -30,12 +31,12 @@ class NiceWebpackMessages {
           });
 
         compiler.hooks.compile.tap('NiceWebpackMessages', (params) => {
-            console.clear()
+            if(this.clear) console.clear()
             console.log("⚙️  " + clc.yellowBright("Compiling..."))
         })
 
         compiler.hooks.afterCompile.tapAsync('NiceWebpackMessages', (compilation, callback) => {
-            console.clear()
+            if(this.clear) console.clear()
             if(this.devServerPort) console.log(clc.greenBright("Dev server: ") + "http://localhost:" + this.devServerPort )
             console.log("⚙️  " + clc.yellow("Compilation:"))
             console.log(clc.greenBright("Source files:"))
