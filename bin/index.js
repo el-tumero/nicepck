@@ -1,7 +1,8 @@
 #! /usr/bin/env node
 const Webpack = require("webpack")
+const path = require("path")
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const NiceWebpackMessages = require('../plugin/NiceWebpackmessages')
+const NiceWebpackMessages = require(path.join(__dirname, "../plugin/NiceWebpackMessages"))
 const webpackConfig = require("../webpack.config.js")
 const clc = require("cli-color")
 const fs = require("fs")
