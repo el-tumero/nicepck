@@ -20,18 +20,18 @@ Currently our Webpack config is made for Typescript, Pug, Scss, Tailwind
 
 ### Basic setup
 
-* Install it with `npm` or `yarn`.
-* Then just type `npm run pck init` or `yarn pck init`. This command will create nessesary config files.
+* Install with `npm` or `yarn`.
+* Type `npm run pck init` or `yarn pck init`. This command will create nessesary config files.
 * Generate template via `npm run pck template` or `yarn pck template`
-* If you want to use .html instead of .pug file you need to change "pug" to "html in nice.config.json file:
+* If you want to use the `.pug` extension instead of `.html` you need to change `"html"` to `"pug"` in the **`nice.config.json`** file:
 
 ```json
 {
-    "htmlTemplate": "html"
+    "htmlTemplate": "pug"
 }
 ```
 
-* In package.json create following scripts:
+* Add following scripts to the **`package.json`** file:
 
 ```json
     "scripts": {
@@ -40,8 +40,8 @@ Currently our Webpack config is made for Typescript, Pug, Scss, Tailwind
     }
 ```
 
-* `"dev"` for development server with HMR enabled
-* `"build"`  for bundling files to `dist` folder
+* `"dev"` - for development server with [HMR](https://webpack.js.org/concepts/hot-module-replacement/) enabled
+* `"build"` - for bundling files to `dist` folder
 * Then simply run `yarn dev` or `npm run dev` or `yarn build` or `npm run build`
 
 <a href="#importing-assets"></a>
@@ -52,22 +52,22 @@ Currently our Webpack config is made for Typescript, Pug, Scss, Tailwind
 
 ### Images
 
-* PUG
-
-```js
-    img(src=require("<path_to_your_image>"))
-```
-
 * HTML
 
 ```html
     <img src="<path_to_your_image>" />
 ```
 
+* PUG
+
+```js
+    img(src=require("<path_to_your_image>"))
+```
+
 * CSS
 
 ```css
-    #testDiv{
+    #testDiv {
          background: url("<path_to_your_image>");
     }
 ```
@@ -92,7 +92,7 @@ Currently our Webpack config is made for Typescript, Pug, Scss, Tailwind
     src: url("<path_to_your_font>");
 }
 
-body{
+body {
     font-family: TestFont
 }
 
@@ -102,7 +102,7 @@ body{
 
 ## Multipage setup
 
-In nice.config.json you can create new entries. For every new entry you need to create a html or pug file (depending on your setup) with the same name as ts file.
+In **`nice.config.json`** you can create new entries. For every new entry you need to create a `html` or `pug` file (depending on your setup) with the same name as ts file.
 
 <a href="#example-setup"></a>
 
@@ -151,3 +151,5 @@ html(lang="en")
         img(src=require("./assets/images/img.png"))
         a(href="./other.pug") Other
 ```
+
+#### Made with love by el-tumero
