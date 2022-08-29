@@ -3,7 +3,7 @@
 ## Intro
 
 A couple of scripts for using Webpack 5 in more friendly way.
-Currently our Webpack config is made for Typescript, Pug, Scss, Tailwind
+Currently our Webpack config is made for Typescript, HTML, Pug, Scss, Tailwind
 
 ## Contents
 
@@ -20,9 +20,9 @@ Currently our Webpack config is made for Typescript, Pug, Scss, Tailwind
 
 ### Basic setup
 
-* Install with `npm` or `yarn`.
-* Type `npm run pck init` or `yarn pck init`. This command will create nessesary config files.
-* Generate template via `npm run pck template` or `yarn pck template`
+* Install with `npm install nicepck` or `yarn add nicepck`.
+* Type `npm run pck init` or `yarn pck init`. This command will bring you to menu where you can select starter options for project (config files/template).
+* You can optionally create config files and generate template via `npm run pck config` and `npm pck template` or `yarn pck config` and `yarn pck template`
 * If you want to use the `.pug` extension instead of `.html` you need to change `"html"` to `"pug"` in the **`nice.config.json`** file:
 
 ```json
@@ -102,7 +102,7 @@ body {
 
 ## Multipage setup
 
-In **`nice.config.json`** you can create new entries. For every new entry you need to create a `html` or `pug` file (depending on your setup) with the same name as ts file.
+In **`nice.config.json`** you can create new entries. For every new entry you need to create a `html` or `pug` file (depending on your setup) with the same name as .ts file.
 
 <a href="#example-setup"></a>
 
@@ -152,4 +152,9 @@ html(lang="en")
         a(href="./other.pug") Other
 ```
 
+### Note
+If you create an entry for example in <b>'./src/other/other.ts'</b> then to a use a link to a subpage you should include only a name of .html / .pug file in ``` <a> ``` tag:
+```html
+    <a href="other.html">Other</a>
+```
 #### Made with love by el-tumero

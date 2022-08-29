@@ -28,9 +28,10 @@ fs.readFile("./nice.config.json", async(err,data) => {
 })
 
 function handleConfig(configFile){
-    let fileExt = "pug" // pug by default
+    let fileExt = "html" // html by default
     let port
-    if(configFile.htmlTemplate === "html") fileExt = "html"
+    if(configFile.htmlTemplate === "pug") fileExt = "pug"
+
     if(isBundling) console.log(fileExt + " file set!")
 
     if(configFile.htmlTemplate)
@@ -39,17 +40,18 @@ function handleConfig(configFile){
         const name = splitedEntry[splitedEntry.length - 1].split(".")[0]
         webpackConfig.entry[name] = entry
 
+        const templatePath = path.join(".", entry).replace('.ts', '.' + fileExt)
+
         webpackConfig["plugins"].push(
         new HtmlWebpackPlugin({
             inject: true,
             chunks: [name],
             filename: name + '.' + "html",
-            template: './src/' + name + '.' + fileExt,
+            template:  templatePath
         })
         )
 
     })
-    // console.log()
 
     webpackConfig["devServer"].port = devServerPort // setting the dev server port 
 

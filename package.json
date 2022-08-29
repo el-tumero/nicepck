@@ -1,6 +1,6 @@
 {
   "name": "nicepck",
-  "version": "1.1.4",
+  "version": "1.1.5",
   "description": "Ready Webpack 5 config for frond-end app using Typescript, SASS, HTML or PUG",
   "main": "./bin/index.js",
   "author": "el-tumero",
@@ -19,7 +19,9 @@
     "file-loader": "^6.2.0",
     "html-loader": "^3.1.2",
     "html-webpack-plugin": "^5.5.0",
+    "keypress": "^0.2.1",
     "postcss-loader": "^7.0.0",
+    "postcss-scss": "^4.0.4",
     "pug": "^3.0.2",
     "pug-loader": "^2.4.0",
     "sass": "^1.52.3",
